@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ABJet · Kết quả API Library</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><main><header><span class="eyebrow">ABJET / OAUTH 2.0</span><h1>Kết quả gọi API Library</h1></header>
+<p>Course App gửi bearer access token từ backend. Access token không được đưa ra trình duyệt.</p>
+<section th:if="${apiResult != null}"><h2>API chấp nhận token · HTTP 200</h2><pre th:text="${apiResult}"></pre></section>
+<p class="notice" role="alert" th:if="${apiError != null}" th:text="${apiError}"></p>
+<nav><a th:href="@{/dashboard}">Về thông tin đăng nhập</a></nav></main></body></html>

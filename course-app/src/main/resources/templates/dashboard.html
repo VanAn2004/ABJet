@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ABJet · Course App · Danh tính</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><main><header><span class="eyebrow">ABJET / COURSE APP</span><h1>Đã xác thực danh tính</h1><p>Họ tên: <strong th:text="${name}"></strong></p><p>Email: <span th:text="${email}"></span></p></header>
+<h2>Thông tin ID Token</h2><p class="muted">Các claim chọn lọc từ ID token đã được Spring Security xác minh. Token nguyên văn không được hiển thị.</p>
+<table><caption>Claim định danh OIDC</caption><tbody><tr th:each="claim : ${idTokenClaims}"><th scope="row" th:text="${claim.key}"></th><td th:text="${claim.value}"></td></tr></tbody></table>
+<h2>OAuth 2.0 · Gọi API Library</h2><p>Course App gửi access token từ backend đến <code>GET /api/demo</code>. Library kiểm tra chữ ký, thời hạn, issuer và audience.</p>
+<form th:action="@{/library-demo}" method="post"><button type="submit">Gọi API Library</button></form>
+<nav aria-label="Điều hướng"><a th:href="${otherAppUrl}">Mở Library App</a><a th:href="@{/}">Trang chủ</a></nav>
+<form th:action="@{/logout}" method="post"><button type="submit">Đăng xuất khỏi Course App</button></form>
+<footer class="muted">Đăng xuất này chỉ kết thúc phiên của Course App. Phiên SSO Keycloak và phiên ứng dụng còn lại vẫn có thể còn hiệu lực.</footer></main></body></html>

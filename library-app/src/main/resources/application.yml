@@ -1,0 +1,30 @@
+server:
+  port: 8082
+  servlet:
+    session:
+      cookie:
+        name: LIBRARYSESSION
+spring:
+  application:
+    name: library-app
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: library-app
+            client-secret: ${LIBRARY_APP_CLIENT_SECRET}
+            authorization-grant-type: authorization_code
+            scope: [openid, profile, email]
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/abjet}
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/abjet}
+          jwk-set-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/abjet}/protocol/openid-connect/certs
+          audiences: [library-app]
+app:
+  other-app-url: http://localhost:8081

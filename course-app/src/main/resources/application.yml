@@ -1,0 +1,25 @@
+server:
+  port: 8081
+  servlet:
+    session:
+      cookie:
+        name: COURSESESSION
+spring:
+  application:
+    name: course-app
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: course-app
+            client-secret: ${COURSE_APP_CLIENT_SECRET:${KEYCLOAK_CLIENT_SECRET:}}
+            authorization-grant-type: authorization_code
+            scope: [openid, profile, email]
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/abjet}
+app:
+  other-app-url: http://localhost:8082

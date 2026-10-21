@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ABJet · Course App</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><main><header><span class="eyebrow">ABJET / COURSE APP</span><h1>Đăng nhập tập trung với Keycloak</h1><p class="muted">Demo Authentication, OAuth 2.0, ID Token và Single Sign-On.</p></header>
+<nav aria-label="Điều hướng"><a class="button" th:href="@{/oauth2/authorization/keycloak}">Đăng nhập bằng Keycloak</a><a th:href="${otherAppUrl}">Mở Library App</a><a th:href="@{/dashboard}">Thông tin đăng nhập</a></nav>
+<p>Ứng dụng chuyển bạn đến Keycloak để xác thực bằng tài khoản trong realm <strong>abjet</strong>.</p>
+<p class="muted">Nếu đã đăng nhập ứng dụng còn lại trong cùng trình duyệt, phiên SSO còn hiệu lực giúp bạn tiếp tục mà không nhập lại mật khẩu.</p>
+<footer>ABJet là sản phẩm học tập; không có chức năng quản lý khóa học hoặc sách.</footer></main></body></html>

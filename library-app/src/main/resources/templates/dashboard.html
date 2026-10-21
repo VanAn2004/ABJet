@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ABJet · Library App · Danh tính</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body><main><header><span class="eyebrow">ABJET / LIBRARY APP</span><h1>Đã xác thực danh tính</h1><p>Họ tên: <strong th:text="${name}"></strong></p><p>Email: <span th:text="${email}"></span></p></header>
+<h2>Thông tin ID Token</h2><p class="muted">Các claim chọn lọc từ ID token đã được Spring Security xác minh. Token nguyên văn không được hiển thị.</p>
+<table><caption>Claim định danh OIDC</caption><tbody><tr th:each="claim : ${idTokenClaims}"><th scope="row" th:text="${claim.key}"></th><td th:text="${claim.value}"></td></tr></tbody></table>
+<h2>OAuth 2.0 · API được bảo vệ</h2><p><code>GET /api/demo</code> yêu cầu bearer access token hợp lệ dành cho <code>library-app</code>. Phiên đăng nhập trang web không thay thế access token.</p><p>Mở Course App để thử gọi API từ backend.</p>
+<nav aria-label="Điều hướng"><a th:href="${otherAppUrl}">Mở Course App</a><a th:href="@{/}">Trang chủ</a></nav>
+<form th:action="@{/logout}" method="post"><button type="submit">Đăng xuất khỏi Library App</button></form>
+<footer class="muted">Đăng xuất này chỉ kết thúc phiên của Library App. Phiên SSO Keycloak và phiên ứng dụng còn lại vẫn có thể còn hiệu lực.</footer></main></body></html>

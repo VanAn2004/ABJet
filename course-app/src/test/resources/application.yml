@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: abjet-test
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: course-app
+            client-secret: test-secret
+            scope: [openid, profile, email]
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8080/realms/abjet/protocol/openid-connect/auth
+            token-uri: http://localhost:8080/realms/abjet/protocol/openid-connect/token
+            jwk-set-uri: http://localhost:8080/realms/abjet/protocol/openid-connect/certs
+            user-info-uri: http://localhost:8080/realms/abjet/protocol/openid-connect/userinfo
+            user-name-attribute: sub
